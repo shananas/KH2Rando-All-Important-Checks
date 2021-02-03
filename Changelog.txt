@@ -1,0 +1,3 @@
+Corrected reflect and magnets code
+fixed having to press the + an extra time to see if you had all important checks
+Added credits
