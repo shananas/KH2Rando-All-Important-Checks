@@ -61,6 +61,8 @@ public class Pnach : MonoBehaviour
     List<string> importantchecks = new List<string>();    
     string pnachpath;    
     string hintpath;
+    string pnachpath2;
+    string pnachpath3;
     public bool read = false;
 
     // Start is called before the first frame update
@@ -69,6 +71,8 @@ public class Pnach : MonoBehaviour
         pnachpath = Application.persistentDataPath;
         hintpath = Application.persistentDataPath;
         Code();
+        pnachpath2 = pnachpath + "/FAF99301.pnach";
+        pnachpath3 = pnachpath + "/B7398B17.pnach";
         pnachpath += "/F266B00B.pnach";
         hintpath += "/Help.txt";
         read = false;     
@@ -87,26 +91,76 @@ public class Pnach : MonoBehaviour
 
     void Function()
     {
-        StreamReader sr = new StreamReader(pnachpath);
-        string line;
-        do
+        if (File.Exists(pnachpath))
         {
-            line = sr.ReadLine();
-            string[] parts = line.Split(new[] { ',' });
-            if (parts.Length == 5)
+            StreamReader sr = new StreamReader(pnachpath);
+            string line;
+            do
             {
-                for (int i = 0; i < keyItems.Count; i++)
+                line = sr.ReadLine();
+                string[] parts = line.Split(new[] { ',' });
+                if (parts.Length == 5)
                 {
-                    if (parts[4] == keyItems[i])
+                    for (int i = 0; i < keyItems.Count; i++)
                     {
-                        importantchecks.Add(line);
+                        if (parts[4] == keyItems[i])
+                        {
+                            importantchecks.Add(line);
+                        }
                     }
                 }
-            }
 
 
-        } while (!sr.EndOfStream);
-        sr.Close();
+            } while (!sr.EndOfStream);
+            sr.Close();
+        }
+        else if (File.Exists(pnachpath2))
+        {
+            StreamReader sr = new StreamReader(pnachpath2);
+            string line;
+            do
+            {
+                line = sr.ReadLine();
+                string[] parts = line.Split(new[] { ',' });
+                if (parts.Length == 5)
+                {
+                    for (int i = 0; i < keyItems.Count; i++)
+                    {
+                        if (parts[4] == keyItems[i])
+                        {
+                            importantchecks.Add(line);
+                        }
+                    }
+                }
+
+
+            } while (!sr.EndOfStream);
+            sr.Close();
+        }
+        else if (File.Exists(pnachpath3))
+        {
+            StreamReader sr = new StreamReader(pnachpath3);
+            string line;
+            do
+            {
+                line = sr.ReadLine();
+                string[] parts = line.Split(new[] { ',' });
+                if (parts.Length == 5)
+                {
+                    for (int i = 0; i < keyItems.Count; i++)
+                    {
+                        if (parts[4] == keyItems[i])
+                        {
+                            importantchecks.Add(line);
+                        }
+                    }
+                }
+
+
+            } while (!sr.EndOfStream);
+            sr.Close();
+        }
+
 
 
         for (int i = 0; i < importantchecks.Count; i++)
