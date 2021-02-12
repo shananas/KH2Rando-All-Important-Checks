@@ -7,7 +7,6 @@ public class Items : MonoBehaviour
     [SerializeField]
     Pnach pnach;
     string world;
-    //public bool pressed = false;    
     Count count;
 
     public void World(string loc, Count a)
@@ -7183,5 +7182,10 @@ public class Items : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
     }
 }
