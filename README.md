@@ -1,4 +1,4 @@
-# KH2Rando-All-Important-Checks
+# KH2Rando-Alternative-to-Hints-Tracker
 This "tracker" is intended as an alternative to hints. It will tell you when you have all important checks in a world. Any world with 0 checks will tell you immediately.
 Everything on Redbuddhas tracker is an important check other than Ansem reports since there are no hints. When you get a check click the plus to the right of the world and then click what you got. 
 
