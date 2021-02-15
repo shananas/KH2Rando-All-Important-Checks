@@ -3,10 +3,13 @@ This "tracker" is intended as an alternative to hints. It will tell you when you
 To read the pnach you need to run the program once the it will create the folder you put it in in appdata. 
 
 C:\Users\\(username)\AppData\LocalLow\DefaultCompany\Alternative to Hints Tracker 
+
 Replace username with yours and you can copy and paste it into explorer or use the "run" program type in appdata and manually navigate to it place the pnach in the folder
 
 Alternatively you can copy this path
+
 %APPDATA%\\..\LocalLow\DefaultCompany\Alternative to Hints Tracker
+
 and paste it into windows explorer and it should take you directly to the folder the pnach goes in.
 Thanks to Tommmadness for this since im dumb.
 
