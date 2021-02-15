@@ -64,6 +64,7 @@ public class Pnach : MonoBehaviour
     string pnachpath2;
     string pnachpath3;
     public bool read = false;
+    private bool cheat = false;
 
     // Start is called before the first frame update
     void Start()
@@ -109,6 +110,17 @@ public class Pnach : MonoBehaviour
                         }
                     }
                 }
+                else if (parts.Length == 1)
+                {
+                    if (parts[0] == "//Remove High Jump LVl" || parts[0] == "//Remove Quick Run LVl")
+                    {
+                        cheat = true;
+                    }
+                    else if (parts[0] == "//Remove Dodge Roll LVl")
+                    {
+                        cheat = false;
+                    }
+                }
 
 
             } while (!sr.EndOfStream);
@@ -130,6 +142,17 @@ public class Pnach : MonoBehaviour
                         {
                             importantchecks.Add(line);
                         }
+                    }
+                }
+                else if (parts.Length == 1)
+                {
+                    if (parts[0] == "//Remove High Jump LVl" || parts[0] == "//Remove Quick Run LVl")
+                    {
+                        cheat = true;
+                    }
+                    else if (parts[0] == "//Remove Dodge Roll LVl")
+                    {
+                        cheat = false;
                     }
                 }
 
@@ -155,6 +178,17 @@ public class Pnach : MonoBehaviour
                         }
                     }
                 }
+                else if (parts.Length == 1)
+                {
+                    if (parts[0] == "//Remove High Jump LVl" || parts[0] == "//Remove Quick Run LVl")
+                    {
+                        cheat = true;
+                    }
+                    else if (parts[0] == "//Remove Dodge Roll LVl")
+                    {
+                        cheat = false;
+                    }
+                }
 
 
             } while (!sr.EndOfStream);
@@ -162,1644 +196,1647 @@ public class Pnach : MonoBehaviour
         }
 
 
-
-        for (int i = 0; i < importantchecks.Count; i++)
+        if (cheat == false)
         {
-            string[] parts = importantchecks[i].Split(new[] { ',' });
-            for (int j = 0; j < STT.Count; j++)
+            for (int i = 0; i < importantchecks.Count; i++)
             {
-                if (parts[2] == STT[j])
+                string[] parts = importantchecks[i].Split(new[] { ',' });
+                for (int j = 0; j < STT.Count; j++)
                 {
-                    STTCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == STT[j])
                     {
-                        STTItems.Add("CProof");
+                        STTCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            STTItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            STTItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            STTItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            STTItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            STTItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            STTItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            STTItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            STTItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            STTItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            STTItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            STTItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            STTItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            STTItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            STTItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            STTItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            STTItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            STTItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            STTItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            STTItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            STTItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            STTItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            STTItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        STTItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        STTItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        STTItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        STTItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        STTItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        STTItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        STTItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        STTItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        STTItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        STTItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        STTItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        STTItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        STTItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        STTItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        STTItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        STTItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        STTItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        STTItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        STTItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        STTItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        STTItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < TT.Count; j++)
-            {
-                if (parts[2] == TT[j])
+                for (int j = 0; j < TT.Count; j++)
                 {
-                    TTCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == TT[j])
                     {
-                        TTItems.Add("CProof");
+                        TTCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            TTItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            TTItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            TTItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            TTItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            TTItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            TTItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            TTItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            TTItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            TTItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            TTItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            TTItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            TTItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            TTItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            TTItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            TTItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            TTItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            TTItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            TTItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            TTItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            TTItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            TTItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            TTItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        TTItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        TTItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        TTItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        TTItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        TTItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        TTItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        TTItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        TTItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        TTItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        TTItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        TTItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        TTItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        TTItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        TTItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        TTItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        TTItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        TTItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        TTItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        TTItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        TTItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        TTItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < HB.Count; j++)
-            {
-                if (parts[2] == HB[j])
+                for (int j = 0; j < HB.Count; j++)
                 {
-                    HBCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == HB[j])
                     {
-                        HBItems.Add("CProof");
+                        HBCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            HBItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            HBItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            HBItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            HBItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            HBItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            HBItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            HBItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            HBItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            HBItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            HBItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            HBItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            HBItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            HBItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            HBItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            HBItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            HBItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            HBItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            HBItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            HBItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            HBItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            HBItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            HBItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        HBItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        HBItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        HBItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        HBItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        HBItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        HBItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        HBItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        HBItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        HBItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        HBItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        HBItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        HBItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        HBItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        HBItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        HBItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        HBItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        HBItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        HBItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        HBItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        HBItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        HBItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < HT.Count; j++)
-            {
-                if (parts[2] == HT[j])
+                for (int j = 0; j < HT.Count; j++)
                 {
-                    HTCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == HT[j])
                     {
-                        HTItems.Add("CProof");
+                        HTCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            HTItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            HTItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            HTItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            HTItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            HTItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            HTItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            HTItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            HTItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            HTItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            HTItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            HTItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            HTItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            HTItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            HTItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            HTItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            HTItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            HTItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            HTItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            HTItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            HTItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            HTItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            HTItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        HTItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        HTItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        HTItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        HTItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        HTItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        HTItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        HTItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        HTItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        HTItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        HTItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        HTItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        HTItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        HTItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        HTItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        HTItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        HTItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        HTItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        HTItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        HTItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        HTItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        HTItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < SP.Count; j++)
-            {
-                if (parts[2] == SP[j])
+                for (int j = 0; j < SP.Count; j++)
                 {
-                    SPCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == SP[j])
                     {
-                        SPItems.Add("CProof");
+                        SPCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            SPItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            SPItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            SPItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            SPItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            SPItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            SPItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            SPItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            SPItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            SPItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            SPItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            SPItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            SPItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            SPItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            SPItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            SPItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            SPItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            SPItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            SPItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            SPItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            SPItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            SPItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            SPItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        SPItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        SPItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        SPItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        SPItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        SPItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        SPItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        SPItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        SPItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        SPItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        SPItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        SPItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        SPItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        SPItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        SPItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        SPItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        SPItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        SPItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        SPItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        SPItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        SPItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        SPItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < PR.Count; j++)
-            {
-                if (parts[2] == PR[j])
+                for (int j = 0; j < PR.Count; j++)
                 {
-                    PRCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == PR[j])
                     {
-                        PRItems.Add("CProof");
+                        PRCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            PRItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            PRItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            PRItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            PRItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            PRItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            PRItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            PRItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            PRItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            PRItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            PRItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            PRItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            PRItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            PRItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            PRItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            PRItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            PRItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            PRItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            PRItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            PRItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            PRItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            PRItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            PRItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        PRItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        PRItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        PRItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        PRItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        PRItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        PRItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        PRItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        PRItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        PRItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        PRItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        PRItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        PRItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        PRItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        PRItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        PRItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        PRItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        PRItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        PRItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        PRItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        PRItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        PRItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < OC.Count; j++)
-            {
-                if (parts[2] == OC[j])
+                for (int j = 0; j < OC.Count; j++)
                 {
-                    OCCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == OC[j])
                     {
-                        OCItems.Add("CProof");
+                        OCCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            OCItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            OCItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            OCItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            OCItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            OCItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            OCItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            OCItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            OCItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            OCItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            OCItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            OCItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            OCItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            OCItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            OCItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            OCItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            OCItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            OCItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            OCItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            OCItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            OCItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            OCItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            OCItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        OCItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        OCItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        OCItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        OCItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        OCItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        OCItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        OCItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        OCItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        OCItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        OCItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        OCItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        OCItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        OCItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        OCItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        OCItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        OCItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        OCItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        OCItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        OCItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        OCItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        OCItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < LoD.Count; j++)
-            {
-                if (parts[2] == LoD[j])
+                for (int j = 0; j < LoD.Count; j++)
                 {
-                    LoDCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == LoD[j])
                     {
-                        LoDItems.Add("CProof");
+                        LoDCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            LoDItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            LoDItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            LoDItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            LoDItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            LoDItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            LoDItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            LoDItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            LoDItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            LoDItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            LoDItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            LoDItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            LoDItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            LoDItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            LoDItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            LoDItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            LoDItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            LoDItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            LoDItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            LoDItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            LoDItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            LoDItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            LoDItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        LoDItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        LoDItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        LoDItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        LoDItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        LoDItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        LoDItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        LoDItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        LoDItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        LoDItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        LoDItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        LoDItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        LoDItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        LoDItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        LoDItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        LoDItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        LoDItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        LoDItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        LoDItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        LoDItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        LoDItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        LoDItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < TWTNW.Count; j++)
-            {
-                if (parts[2] == TWTNW[j])
+                for (int j = 0; j < TWTNW.Count; j++)
                 {
-                    TWTNWCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == TWTNW[j])
                     {
-                        TWTNWItems.Add("CProof");
+                        TWTNWCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            TWTNWItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            TWTNWItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            TWTNWItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            TWTNWItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            TWTNWItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            TWTNWItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            TWTNWItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            TWTNWItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            TWTNWItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            TWTNWItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            TWTNWItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            TWTNWItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            TWTNWItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            TWTNWItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            TWTNWItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            TWTNWItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            TWTNWItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            TWTNWItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            TWTNWItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            TWTNWItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            TWTNWItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            TWTNWItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        TWTNWItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        TWTNWItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        TWTNWItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        TWTNWItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        TWTNWItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        TWTNWItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        TWTNWItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        TWTNWItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        TWTNWItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        TWTNWItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        TWTNWItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        TWTNWItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        TWTNWItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        TWTNWItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        TWTNWItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        TWTNWItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        TWTNWItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        TWTNWItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        TWTNWItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        TWTNWItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        TWTNWItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < BC.Count; j++)
-            {
-                if (parts[2] == BC[j])
+                for (int j = 0; j < BC.Count; j++)
                 {
-                    BCCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == BC[j])
                     {
-                        BCItems.Add("CProof");
+                        BCCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            BCItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            BCItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            BCItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            BCItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            BCItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            BCItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            BCItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            BCItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            BCItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            BCItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            BCItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            BCItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            BCItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            BCItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            BCItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            BCItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            BCItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            BCItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            BCItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            BCItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            BCItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            BCItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        BCItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        BCItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        BCItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        BCItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        BCItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        BCItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        BCItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        BCItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        BCItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        BCItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        BCItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        BCItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        BCItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        BCItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        BCItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        BCItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        BCItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        BCItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        BCItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        BCItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        BCItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < AG.Count; j++)
-            {
-                if (parts[2] == AG[j])
+                for (int j = 0; j < AG.Count; j++)
                 {
-                    AGCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == AG[j])
                     {
-                        AGItems.Add("CProof");
+                        AGCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            AGItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            AGItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            AGItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            AGItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            AGItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            AGItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            AGItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            AGItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            AGItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            AGItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            AGItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            AGItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            AGItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            AGItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            AGItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            AGItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            AGItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            AGItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            AGItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            AGItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            AGItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            AGItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        AGItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        AGItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        AGItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        AGItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        AGItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        AGItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        AGItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        AGItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        AGItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        AGItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        AGItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        AGItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        AGItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        AGItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        AGItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        AGItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        AGItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        AGItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        AGItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        AGItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        AGItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < PL.Count; j++)
-            {
-                if (parts[2] == PL[j])
+                for (int j = 0; j < PL.Count; j++)
                 {
-                    PLCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == PL[j])
                     {
-                        PLItems.Add("CProof");
+                        PLCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            PLItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            PLItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            PLItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            PLItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            PLItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            PLItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            PLItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            PLItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            PLItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            PLItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            PLItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            PLItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            PLItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            PLItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            PLItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            PLItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            PLItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            PLItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            PLItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            PLItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            PLItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            PLItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        PLItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        PLItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        PLItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        PLItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        PLItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        PLItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        PLItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        PLItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        PLItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        PLItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        PLItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        PLItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        PLItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        PLItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        PLItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        PLItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        PLItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        PLItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        PLItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        PLItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        PLItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < DC.Count; j++)
-            {
-                if (parts[2] == DC[j])
+                for (int j = 0; j < DC.Count; j++)
                 {
-                    DCCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == DC[j])
                     {
-                        DCItems.Add("CProof");
+                        DCCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            DCItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            DCItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            DCItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            DCItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            DCItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            DCItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            DCItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            DCItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            DCItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            DCItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            DCItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            DCItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            DCItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            DCItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            DCItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            DCItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            DCItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            DCItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            DCItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            DCItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            DCItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            DCItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        DCItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        DCItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        DCItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        DCItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        DCItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        DCItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        DCItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        DCItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        DCItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        DCItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        DCItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        DCItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        DCItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        DCItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        DCItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        DCItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        DCItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        DCItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        DCItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        DCItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        DCItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < hundredacre.Count; j++)
-            {
-                if (parts[2] == hundredacre[j])
+                for (int j = 0; j < hundredacre.Count; j++)
                 {
-                    hundredacreCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == hundredacre[j])
                     {
-                        HundredItems.Add("CProof");
+                        hundredacreCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            HundredItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            HundredItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            HundredItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            HundredItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            HundredItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            HundredItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            HundredItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            HundredItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            HundredItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            HundredItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            HundredItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            HundredItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            HundredItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            HundredItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            HundredItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            HundredItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            HundredItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            HundredItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            HundredItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            HundredItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            HundredItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            HundredItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        HundredItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        HundredItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        HundredItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        HundredItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        HundredItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        HundredItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        HundredItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        HundredItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        HundredItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        HundredItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        HundredItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        HundredItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        HundredItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        HundredItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        HundredItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        HundredItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        HundredItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        HundredItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        HundredItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        HundredItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        HundredItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < Atlantica.Count; j++)
-            {
-                if (parts[2] == Atlantica[j])
+                for (int j = 0; j < Atlantica.Count; j++)
                 {
-                    AtlanticaCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == Atlantica[j])
                     {
-                        ATItems.Add("CProof");
+                        AtlanticaCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            ATItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            ATItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            ATItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            ATItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            ATItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            ATItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            ATItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            ATItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            ATItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            ATItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            ATItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            ATItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            ATItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            ATItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            ATItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            ATItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            ATItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            ATItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            ATItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            ATItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            ATItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            ATItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        ATItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        ATItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        ATItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        ATItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        ATItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        ATItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        ATItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        ATItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        ATItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        ATItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        ATItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        ATItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        ATItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        ATItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        ATItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        ATItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        ATItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        ATItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        ATItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        ATItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        ATItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < Levels.Count; j++)
-            {
-                if (parts[2] == Levels[j])
+                for (int j = 0; j < Levels.Count; j++)
                 {
-                    LevelsCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == Levels[j])
                     {
-                        LevelItems.Add("CProof");
+                        LevelsCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            LevelItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            LevelItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            LevelItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            LevelItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            LevelItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            LevelItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            LevelItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            LevelItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            LevelItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            LevelItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            LevelItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            LevelItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            LevelItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            LevelItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            LevelItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            LevelItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            LevelItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            LevelItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            LevelItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            LevelItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            LevelItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            LevelItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        LevelItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        LevelItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        LevelItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        LevelItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        LevelItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        LevelItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        LevelItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        LevelItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        LevelItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        LevelItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        LevelItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        LevelItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        LevelItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        LevelItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        LevelItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        LevelItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        LevelItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        LevelItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        LevelItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        LevelItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        LevelItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
-            for (int j = 0; j < Forms.Count; j++)
-            {
-                if (parts[2] == Forms[j])
+                for (int j = 0; j < Forms.Count; j++)
                 {
-                    FormsCount++;
-                    if (parts[4] == "00000251")
+                    if (parts[2] == Forms[j])
                     {
-                        FormItems.Add("CProof");
+                        FormsCount++;
+                        if (parts[4] == "00000251")
+                        {
+                            FormItems.Add("CProof");
+                        }
+                        else if (parts[4] == "00000252")
+                        {
+                            FormItems.Add("NProof");
+                        }
+                        else if (parts[4] == "00000253")
+                        {
+                            FormItems.Add("TProof");
+                        }
+                        else if (parts[4] == "0000001A")
+                        {
+                            FormItems.Add("Valor");
+                        }
+                        else if (parts[4] == "0000001B")
+                        {
+                            FormItems.Add("Wisdom");
+                        }
+                        else if (parts[4] == "00000233")
+                        {
+                            FormItems.Add("Limit");
+                        }
+                        else if (parts[4] == "0000001F")
+                        {
+                            FormItems.Add("Master");
+                        }
+                        else if (parts[4] == "0000001D")
+                        {
+                            FormItems.Add("Final");
+                        }
+                        else if (parts[4] == "0000017F")
+                        {
+                            FormItems.Add("Chicken");
+                        }
+                        else if (parts[4] == "00000019")
+                        {
+                            FormItems.Add("Stitch");
+                        }
+                        else if (parts[4] == "0000009F")
+                        {
+                            FormItems.Add("Genie");
+                        }
+                        else if (parts[4] == "000000A0")
+                        {
+                            FormItems.Add("Peter");
+                        }
+                        else if (parts[4] == "00000015")
+                        {
+                            FormItems.Add("Fire");
+                        }
+                        else if (parts[4] == "00000016")
+                        {
+                            FormItems.Add("Blizzard");
+                        }
+                        else if (parts[4] == "00000017")
+                        {
+                            FormItems.Add("Thunder");
+                        }
+                        else if (parts[4] == "00000018")
+                        {
+                            FormItems.Add("Cure");
+                        }
+                        else if (parts[4] == "00000057")
+                        {
+                            FormItems.Add("Magnet");
+                        }
+                        else if (parts[4] == "00000058")
+                        {
+                            FormItems.Add("Reflect");
+                        }
+                        else if (parts[4] == "00000020")
+                        {
+                            FormItems.Add("Pages");
+                        }
+                        else if (parts[4] == "0000019F")
+                        {
+                            FormItems.Add("SChance");
+                        }
+                        else if (parts[4] == "000001A0")
+                        {
+                            FormItems.Add("OMore");
+                        }
+                        else if (parts[4] == "0000020C")
+                        {
+                            FormItems.Add("PCharm");
+                        }
+                        break;
                     }
-                    else if (parts[4] == "00000252")
-                    {
-                        FormItems.Add("NProof");
-                    }
-                    else if (parts[4] == "00000253")
-                    {
-                        FormItems.Add("TProof");
-                    }
-                    else if (parts[4] == "0000001A")
-                    {
-                        FormItems.Add("Valor");
-                    }
-                    else if (parts[4] == "0000001B")
-                    {
-                        FormItems.Add("Wisdom");
-                    }
-                    else if (parts[4] == "00000233")
-                    {
-                        FormItems.Add("Limit");
-                    }
-                    else if (parts[4] == "0000001F")
-                    {
-                        FormItems.Add("Master");
-                    }
-                    else if (parts[4] == "0000001D")
-                    {
-                        FormItems.Add("Final");
-                    }
-                    else if (parts[4] == "0000017F")
-                    {
-                        FormItems.Add("Chicken");
-                    }
-                    else if (parts[4] == "00000019")
-                    {
-                        FormItems.Add("Stitch");
-                    }
-                    else if (parts[4] == "0000009F")
-                    {
-                        FormItems.Add("Genie");
-                    }
-                    else if (parts[4] == "000000A0")
-                    {
-                        FormItems.Add("Peter");
-                    }
-                    else if (parts[4] == "00000015")
-                    {
-                        FormItems.Add("Fire");
-                    }
-                    else if (parts[4] == "00000016")
-                    {
-                        FormItems.Add("Blizzard");
-                    }
-                    else if (parts[4] == "00000017")
-                    {
-                        FormItems.Add("Thunder");
-                    }
-                    else if (parts[4] == "00000018")
-                    {
-                        FormItems.Add("Cure");
-                    }
-                    else if (parts[4] == "00000057")
-                    {
-                        FormItems.Add("Magnet");
-                    }
-                    else if (parts[4] == "00000058")
-                    {
-                        FormItems.Add("Reflect");
-                    }
-                    else if (parts[4] == "00000020")
-                    {
-                        FormItems.Add("Pages");
-                    }
-                    else if (parts[4] == "0000019F")
-                    {
-                        FormItems.Add("SChance");
-                    }
-                    else if (parts[4] == "000001A0")
-                    {
-                        FormItems.Add("OMore");
-                    }
-                    else if (parts[4] == "0000020C")
-                    {
-                        FormItems.Add("PCharm");
-                    }
-                    break;
                 }
-            }
 
+            }
         }
+       
 
         StreamWriter sw = new StreamWriter(hintpath);
         sw.WriteLine(STTCount); //STT

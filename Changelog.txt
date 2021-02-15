@@ -6,3 +6,5 @@ Fixed the checker covering the world your putting the check in
 Added an x if you accidentally hit the plus
 Added and adjusted error check windows to reduce the amount you have to move your mouse
 Added a second build with orb icons
+Fixed an inconsistency between the orb and simple icons
+Fixed some of the x's not working
