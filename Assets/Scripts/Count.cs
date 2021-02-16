@@ -381,15 +381,4 @@ public class Count : MonoBehaviour
         }
         because = false;
     }
-
-    //public void Minus()
-    //{
-    //    if (number > 0)
-    //    {
-    //        number = int.Parse(text.text);
-    //        number--;
-    //        text.text = number.ToString();
-    //    }
-    //}
-
 }
