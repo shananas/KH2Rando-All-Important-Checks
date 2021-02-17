@@ -13,4 +13,4 @@ Alternatively you can copy this path
 and paste it into windows explorer and it should take you directly to the folder the pnach goes in.
 Thanks to Tommmadness for this since im dumb.
 
-After downloaded the tracker for the very first time you will have to run it once to be able to get to the folder since it needs to be created. Once the pnach is in the folder you will need to restart the program since it only reads the pnach on startup. Any pnach name valaxors website provides a download for will work but it must only be the name from the website no extra numbers names or spaces.
+After downloading the tracker for the very first time you will have to run it once to be able to get to the folder since it needs to be created. Once the pnach is in the folder you will need to restart the program since it only reads the pnach on startup. Any pnach name valaxors website provides a download for will work but it must only be the name from the website no extra numbers names or spaces.
