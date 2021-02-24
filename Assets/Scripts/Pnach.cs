@@ -753,7 +753,7 @@ public class Pnach : MonoBehaviour
     string pnachpath2;
     string pnachpath3;
     public bool read = false;
-    private bool cheat = false;
+    private bool how = false;
     public bool doneread = false;
 
     // Start is called before the first frame update
@@ -803,11 +803,11 @@ public class Pnach : MonoBehaviour
                 {
                     if (parts[0] == "//Remove High Jump LVl" || parts[0] == "//Remove Quick Run LVl")
                     {
-                        cheat = true;
+                        how = true;
                     }
                     else if (parts[0] == "//Remove Dodge Roll LVl")
                     {
-                        cheat = false;
+                        how = false;
                     }
                 }
 
@@ -837,11 +837,11 @@ public class Pnach : MonoBehaviour
                 {
                     if (parts[0] == "//Remove High Jump LVl" || parts[0] == "//Remove Quick Run LVl")
                     {
-                        cheat = true;
+                        how = true;
                     }
                     else if (parts[0] == "//Remove Dodge Roll LVl")
                     {
-                        cheat = false;
+                        how = false;
                     }
                 }
 
@@ -871,11 +871,11 @@ public class Pnach : MonoBehaviour
                 {
                     if (parts[0] == "//Remove High Jump LVl" || parts[0] == "//Remove Quick Run LVl")
                     {
-                        cheat = true;
+                        how = true;
                     }
                     else if (parts[0] == "//Remove Dodge Roll LVl")
                     {
-                        cheat = false;
+                        how = false;
                     }
                 }
 
@@ -885,7 +885,7 @@ public class Pnach : MonoBehaviour
         }
 
 
-        if (cheat == false)
+        if (!how)
         {
             for (int i = 0; i < importantchecks.Count; i++)
             {
